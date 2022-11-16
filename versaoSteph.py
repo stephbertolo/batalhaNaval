@@ -37,16 +37,18 @@ def imprimirTabuleiro(tabuleiro):
         print(tabuleiro[coluna])
 
 
-# Jogadas do computador
+############################ Programa principal #################################
+
+
+# Jogadas do computador, feitas previamente pelo programa e registradas no tabuleiro de coordenadas.
+linhasComput = []
 colunasComput = []
 
-for valor in range(10):
-    colunasComput.append(valor)
+for i in range(5):
+    linhasComput.append(i)
 
-linhasComput = []
-
-for num in range(5):
-    linhasComput.append(num)
+for i in range(10):
+    colunasComput.append(i)
 
 for jogadasComputador in range(5):
 
@@ -57,17 +59,20 @@ for jogadasComputador in range(5):
         posicaoColunaComput = random.choice(colunasComput)
 
         if tabuleiroComputCoord[posicaoLinhaComput][posicaoColunaComput] != 0:
-            print("")
+            contadorComput = 0
         else:
             tabuleiroComputCoord[posicaoLinhaComput][posicaoColunaComput] = 3
             contadorComput += 1
 
-imprimirTabuleiro(tabuleiroComputCoord)
 
+print("Boas vindas ao jogo de Batalha Naval!\n"
+      "Para começar, você deve escolher as posições de suas embarcações.\n"
+      "As posições são definidas entre linhas e colunas. As linhas são horizontais (0 a 4) e as colunas verticais (0 a 9).\n \n"
+      "Este é o seu tabuleiro: \n")
 
+imprimirTabuleiro(tabuleiroPlayerCoord)
 
-
-# Enquanto esse for rodar, o jogador escolherá suas posições.
+# Enquanto esse for rodar, o jogador escolherá as posições das embarcações.
 for posicionarJogadas in range(5):
 
     contador = 0
@@ -92,8 +97,4 @@ for posicionarJogadas in range(5):
             imprimirTabuleiro(tabuleiroPlayerCoord)
             contador += 1
 
-
-
-
-
-print("\n Agora que você posicionou todas as suas embarcações, vamos começar.")
+print("\nAgora que você posicionou todas as suas embarcações, vamos começar.")
