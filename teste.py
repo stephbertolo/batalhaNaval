@@ -1,36 +1,30 @@
-import random
+def criarTabuleiroComputador(linhas, colunas):
+    tabuleiroComput = []
 
-tabuleiroComput = [
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0]
-]
+    for i in range(linhas):
+        linhasComput = []
+        for j in range(colunas):
+            linhasComput.append(0)
 
-def printTabuleiro(num1):
-    for coluna in range(5):
-        print(num1[coluna])
+        tabuleiroComput.append(linhasComput)
 
-colunas = []
-for valor in range(10):
-    colunas.append(valor)
+    return tabuleiroComput
 
-linhas = []
-for num in range(5):
-    linhas.append(num)
 
-for quant in range(5):
+print(criarTabuleiroComputador(5, 10))
 
-    cont3 = 0
 
-    while cont3 < 1:
-        posColunas = random.choice(colunas)
-        posLinhas = random.choice(linhas)
-        if tabuleiroComput[posLinhas][posColunas] != 0:
-            print("")
-        else:
-            tabuleiroComput[posLinhas][posColunas] = 3
-            cont3 += 1
 
-printTabuleiro(tabuleiroComput)
+def criarTabuleiroJogador(linhas, colunas):
+    tabuleiroJogador = []
+
+    for i in range(linhas):
+        linhasJogador = []
+        for j in range(colunas):
+            linhasJogador.append(0)
+
+        tabuleiroJogador.append(linhasJogador)
+
+    return tabuleiroJogador
+
+print(criarTabuleiroJogador(5, 10))

@@ -1,5 +1,4 @@
 import random
-import time
 
 tabuleiroPlayerCoord = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -41,14 +40,18 @@ def imprimirTabuleiro(tabuleiro):
 
 
 # Jogadas do computador, feitas previamente pelo programa e registradas no tabuleiro de coordenadas.
-linhasComput = []
-colunasComput = []
 
-for i in range(5):
-    linhasComput.append(i)
+def jogadasComputador(linhas, colunas):
+    tabuleiroComputCoord = [0]
 
-for i in range(10):
-    colunasComput.append(i)
+    for i in range(linhas):
+        linhasComput = []
+        for j in range(colunas):
+            linhasComput.append(i)
+
+    tabuleiroComputCoord.append(linhasComput)
+
+    return tabuleiroComputCoord
 
 for jogadasComputador in range(5):
 
