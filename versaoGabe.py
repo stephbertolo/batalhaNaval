@@ -121,33 +121,48 @@ embarcEnemy = 5
 
 # Ataque
 while whileContsupreme < 1:
+
     whileCont = 0
+
     while whileCont < 1:
-        time.sleep(2)
+
+
         linhasChoose = int(input("Qual linha inimiga deseja atacar? (0 a 4):"))
         colunasChoose = int(input("Qual Coluna inimiga deseja atacar? (0 a 9):"))
-        print("\n")
+
+
         if tabuleiroComput[linhasChoose][colunasChoose] != 0:
             print("Parabéns, você acertou!")
-            print("\n")
-            time.sleep(2)
+
+
             tabuleiroMarcComput[linhasChoose][colunasChoose] = 3
+
             print("Este é o tabuleiro inimigo:")
+
             printTabuleiro(tabuleiroMarcComput)
+
             embarcEnemy -= 1
+
             print("Restaram " + str(embarcEnemy) + " embarcações.")
+
             whileCont += 1
+
         elif tabuleiroMarcComput[linhasChoose][colunasChoose] != 0:
+
             print("Você já escolheu essa posição. Tente novamente!")
+
             time.sleep(2)
+
         elif (linhasChoose < 0 or linhasChoose > 4):
             print("Por favor, digite um valor válido para as linhas. Entre 0 e 4:")
             print("\n")
             time.sleep(2)
+
         elif (colunasChoose < 0 or colunasChoose > 9):
             print("Por favor, digite um valor válido para as colunas. Entre 0 e 9")
             print("\n")
             time.sleep(2)
+
         else:
             print("Você errou :(")
             print("\n")
@@ -157,6 +172,7 @@ while whileContsupreme < 1:
             printTabuleiro(tabuleiroMarcComput)
             print("Restaram " + str(embarcEnemy) + " embarcações.")
             whileCont += 1
+
         if embarcMe < 1:
             time.sleep(2)
             print("Parabéns! Você afundou todas as embarcações inimigas!")
@@ -165,32 +181,30 @@ while whileContsupreme < 1:
             whileContsupreme += 2
         else:
             print("\n")
+
+
     whileCont -= 1
     while whileCont < 1:
-        print("\n")
-        print("Agora é a vez do inimigo.")
-        time.sleep(2)
+
+
         posColunas = random.choice(colunas)
         posLinhas = random.choice(linhas)
-        print("\n")
-        print("O inimigo escolheu a linha " + str(posLinhas) + " e a coluna " + str(posColunas))
-        time.sleep(1)
+
+
         if tabuleiroPlayer[posLinhas][posColunas] != 0:
-            print("\n")
-            print("O inimigo acertou!")
-            time.sleep(3)
             tabuleiroMarcplayer[posLinhas][posColunas] = 3
-            print("Este é o seu tabuleiro:")
-            printTabuleiro(tabuleiroMarcplayer)
             embarcMe -= 1
-            print("Restaram " + str(embarcMe) + " embarcações.")
             whileCont += 1
+
         elif tabuleiroMarcplayer[posLinhas][posColunas] != 0:
             print("")
+
         elif (posLinhas < 0 or posLinhas > 4):
             print("")
+
         elif (posColunas < 0 or posColunas > 9):
             print("")
+
         else:
             print("\n")
             print("O inimigo errou :)")
