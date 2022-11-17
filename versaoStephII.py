@@ -1,7 +1,6 @@
 import random
 
-
-# Função que cria um tabuleiro.
+# Função que cria os tabuleiros
 
 def criarTabuleiro(linhas, colunas):
     tabuleiro = []
@@ -16,7 +15,7 @@ def criarTabuleiro(linhas, colunas):
     return tabuleiro
 
 
-# Função que imprime um tabuleiro.
+# Função que imprime os tabuleiros
 
 def imprimirTabuleiro(tabuleiro):
     for linha in range(len(tabuleiro)):
@@ -31,23 +30,44 @@ tabuleiroComputCoord = criarTabuleiro(5, 10)
 tabuleiroComputFeed = criarTabuleiro(5, 10)
 
 
-# Jogada do computador
-contador = 0
+# Coordenadas do computador
+jogadasComputador = 0
 
-while contador < 5:
+while jogadasComputador < 5:
 
-    posLinhas = random.randint(0, 4)
-    posColunas = random.randint(0, 9)
+    linhasComput = random.randint(0, 4)
+    colunasComput = random.randint(0, 9)
 
-    for i in range(posLinhas):
-        for j in range(posColunas):
-            if tabuleiroComputCoord[posLinhas][posColunas] == 0:
-                tabuleiroComputCoord[posLinhas][posColunas] = 3
-                contador += 1
+    for i in range(linhasComput):
+        for j in range(colunasComput):
+            if tabuleiroComputCoord[linhasComput][colunasComput] == 0:
+                tabuleiroComputCoord[linhasComput][colunasComput] = 3
+                jogadasComputador += 1
             else:
-                contador = contador
+                jogadasComputador = jogadasComputador
 
 
-imprimirTabuleiro(tabuleiroComputCoord)
+# Coordenadas do jogador
+jogadasJogador = 0
 
-print(posLinhas, posColunas)
+while jogadasJogador < 5:
+
+    linhaJogad = int(input('Escolha uma posição vertical entre 0 e 4: '))
+    colunaJogad = int(input('Escolha uma posição horizontal  entre 0 e 9: '))
+
+    if linhaJogad < 0 or linhaJogad > 4:
+        print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas:  \n")
+
+    elif colunaJogad < 0 or colunaJogad > 9:
+        print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas: \n")
+
+    elif tabuleiroJogadorCoord[linhaJogad][colunaJogad] != 0:
+        print("\nVocê já posicionou uma embarcação aqui! Tente novamente.\n")
+
+    else:
+        tabuleiroJogadorCoord[linhaJogad][colunaJogad] = 3
+        print("\nEste é o seu tabuleiro:")
+        imprimirTabuleiro(tabuleiroJogadorCoord)
+        jogadasJogador += 1
+
+
