@@ -2,7 +2,6 @@ import random
 
 
 # Função que cria os tabuleiros
-
 def criarTabuleiro(linhas, colunas):
     tabuleiro = []
 
@@ -17,26 +16,35 @@ def criarTabuleiro(linhas, colunas):
 
 
 # Função que imprime os tabuleiros
-
 def imprimirTabuleiro(tabuleiro):
     for linha in range(len(tabuleiro)):
         print(tabuleiro[linha])
 
 
-# Tabuleiros dos jogadores
+# Função que imprime o status atual dos tabuleiros
+def tabuleirosStatus():
+    print('\nTabuleiro do Computador:')
+    imprimirTabuleiro(tabuleiroComputFeed)
+    print('-' * 30)
+    print(f"Embarcações restantes: {embarcacoesComput}\n")
 
-tabuleiroJogadorCoord = criarTabuleiro(5, 10)  # Armazena as coordenadas das embarcações.
+    print('\nTabuleiro do Jogador: ')
+    imprimirTabuleiro(tabuleiroJogadorFeed)
+    print('=' * 30)
+    print(f"Embarcações restantes: {embarcacoesJogad}\n")
+
+
+# Tabuleiros dos jogadores e quantidades de embarcações
+tabuleiroJogadorCoord = criarTabuleiro(5, 10)  # Armazena as coordenadas das embarcações
 tabuleiroComputCoord = criarTabuleiro(5, 10)
 
-tabuleiroJogadorFeed = criarTabuleiro(5, 10)
+tabuleiroJogadorFeed = criarTabuleiro(5, 10)  # Feedback do status dos tabuleiros
 tabuleiroComputFeed = criarTabuleiro(5, 10)
-
 
 embarcacoesJogad = 5  # Embarcações restantes
 embarcacoesComput = 5
 
-# Coordenadas do computador
-
+# Coordenadas do computador definidas previamente pelo programa, de forma aleatória
 jogadasComputador = 0
 
 while jogadasComputador < 5:
@@ -52,15 +60,16 @@ while jogadasComputador < 5:
             else:
                 jogadasComputador = jogadasComputador
 
+# Boas vindas ao jogo
+print('\nBoas vindas a Batalha Naval! Antes de tudo, escolha as coordenadas para colocar suas embarações.\n')
 
-# Coordenadas do jogador
-
+# Coordenadas definidas pelo jogador para posicionar as suas embarcações
 jogadasJogador = 0
 
 while jogadasJogador < 5:
 
     linhaJogad = int(input('Escolha uma posição vertical entre 0 e 4: '))
-    colunaJogad = int(input('Escolha uma posição horizontal  entre 0 e 9: '))
+    colunaJogad = int(input('\nEscolha uma posição horizontal  entre 0 e 9: '))
 
     if linhaJogad < 0 or linhaJogad > 4:
         print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas:  \n")
@@ -73,55 +82,44 @@ while jogadasJogador < 5:
 
     else:
         tabuleiroJogadorCoord[linhaJogad][colunaJogad] = 3
-        print("\nEste é o seu tabuleiro:")
-        #imprimirTabuleiro(tabuleiroJogadorCoord)
+        print("\nEste é o seu tabuleiro:\n")
+        imprimirTabuleiro(tabuleiroJogadorCoord)
         jogadasJogador += 1
 
-
-
-print('\nTabuleiro do Computador:')
-imprimirTabuleiro(tabuleiroComputFeed)
-print('=' * 30)
-print(f"Embarcações restantes: {embarcacoesComput} \n")
-
-print('Tabuleiro do Jogador: ')
-imprimirTabuleiro(tabuleiroJogadorFeed)
-print('=' * 30)
-print(f"Embarcações restantes: {embarcacoesJogad} \n")
-
-# Ataques
-
+# Jogatina
 while embarcacoesJogad and embarcacoesComput != 0:
 
     # Ataque do computador
+    print('\nAgora é a vez do Computador de jogar!\n')
 
-    ataquesComputador = 0
+    ataquesComputador = 1
 
-    while ataquesComputador < 1:
+    while ataquesComputador == 1:
 
         linhaJogad = random.randint(0, 4)  # 0
         colunaJogad = random.randint(0, 9)  # 0
 
         if tabuleiroJogadorCoord[linhaJogad][colunaJogad] != 0:
-            print('Computador acertou! :(')
-            tabuleiroJogadorCoord[linhaJogad][colunaJogad] = 'X'
+            print('\nComputador acertou! :(\n')
+            tabuleiroJogadorFeed[linhaJogad][colunaJogad] = 'X'
             embarcacoesJogad -= 1
         elif tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 0:
-            print('Computador errou! :)')
+            print('\nComputador errou! :)\n')
 
-        ataquesComputador += 1
+        ataquesComputador -= 1
 
         print(linhaJogad, colunaJogad)
         print(embarcacoesJogad)
         imprimirTabuleiro(tabuleiroJogadorCoord)
 
+    tabuleirosStatus()
 
-    imprimirTabuleiro(tabuleiroComputCoord)
     # Ataque do jogador
+    print('\nAgora é a sua vez de jogar!\n')
 
-    ataquesJogador = 0
+    ataquesJogador = 1
 
-    while ataquesJogador < 1:
+    while ataquesJogador == 1:
 
         linhaComput = int(input('Escolha qual posição horizontal deseja atacar (0, 4): '))
         colunaComput = int(input('Escolha qual posição vertical deseja atacar (0, 9): '))
@@ -133,17 +131,13 @@ while embarcacoesJogad and embarcacoesComput != 0:
             print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas: \n")
 
         elif tabuleiroComputCoord[linhaComput][colunaComput] != 0:
-            print('Você acertou! :)')
-            tabuleiroComputCoord[linhaComput][colunaComput] = 'X'
+            print('\nVocê acertou! :)\n')
+            tabuleiroComputFeed[linhaComput][colunaComput] = 'X'
             embarcacoesComput -= 1
 
         elif tabuleiroComputCoord[linhaComput][colunaComput] == 0:
-            print('Você errou! :(')
+            print('\nVocê errou! :(\n')
 
-        ataquesJogador += 1
+        ataquesJogador -= 1
 
-        print(linhaComput, colunaComput)
-        print(embarcacoesComput)
-        imprimirTabuleiro(tabuleiroComputCoord)
-
-
+        tabuleirosStatus()
