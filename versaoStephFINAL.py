@@ -152,3 +152,14 @@ while embarcacoesJogad and embarcacoesComput != 0:
         time.sleep(2)
         tabuleirosStatus()
         time.sleep(2)
+
+
+# Condições de vitória e de derrota
+
+if embarcacoesComput == 0:
+    print(f'Você venceu com {embarcacoesJogad} restantes! PARABÉNS!!')
+
+else:
+    print(f'Computador venceu com {embarcacoesComput} restantes! Fica para a próxima! :)')
+
+print('\nObrigada por jogar BATALHA NAVAL! \nEste jogo foi desenvolvido por Stephanie, Melyça e Gabriel!')
