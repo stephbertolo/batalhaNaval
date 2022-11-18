@@ -76,7 +76,7 @@ while jogadasJogador < 5:
     colunaJogad = int(input('Escolha uma posição horizontal  entre 0 e 9: '))
 
     if linhaJogad < 0 or linhaJogad > 4:
-        print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas:  \n")
+        print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas: \n")
 
     elif colunaJogad < 0 or colunaJogad > 9:
         print("\nPosição inválida! Escolha uma posição entre 0 e 4 para linha e entre 0 e 9 para colunas: \n")
