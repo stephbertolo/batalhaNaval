@@ -107,16 +107,22 @@ while embarcacoesJogad and embarcacoesComput != 0:
         colunaJogad = random.randint(0, 9)
 
         if tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 3:
-            print("\nO computador escolheu a linha " + str(linhaJogad) + " e a coluna " + str(colunaJogad))
+            print(f"\nO computador escolheu a linha {str(linhaJogad)} e a coluna {str(colunaJogad)}.")
             print('\nComputador acertou! :(\n')
+            tabuleiroJogadorCoord[linhaJogad][colunaJogad] = 1
             tabuleiroJogadorFeed[linhaJogad][colunaJogad] = 'X'
             embarcacoesJogad -= 1
+            ataquesComputador -= 1
         elif tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 0:
-            print("\nO computador escolheu a linha " + str(linhaJogad) + " e a coluna " + str(colunaJogad))
+            tabuleiroJogadorCoord[linhaJogad][colunaJogad] = 1
+            print(f"\nO computador escolheu a linha {str(linhaJogad)} e a coluna {str(colunaJogad)}.")
             print('\nComputador errou! :)\n')
             tabuleiroJogadorFeed[linhaJogad][colunaJogad] = 'O'
+            ataquesComputador -= 1
 
-        ataquesComputador -= 1
+        elif tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 1:
+            print("Computador já atacou aqui e portanto irá tentar atacar novamente em outro local.")
+
         time.sleep(2)
         tabuleirosStatus()
         time.sleep(2)
