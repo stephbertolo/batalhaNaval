@@ -103,14 +103,16 @@ while embarcacoesJogad and embarcacoesComput != 0:
 
     while ataquesComputador == 1:
 
-        linhaJogad = random.randint(0, 4)  # 0
-        colunaJogad = random.randint(0, 9)  # 0
+        linhaJogad = random.randint(0, 4)
+        colunaJogad = random.randint(0, 9)
 
         if tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 3:
+            print("\nO computador escolheu a linha " + str(linhaJogad) + " e a coluna " + str(colunaJogad))
             print('\nComputador acertou! :(\n')
             tabuleiroJogadorFeed[linhaJogad][colunaJogad] = 'X'
             embarcacoesJogad -= 1
         elif tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 0:
+            print("\nO computador escolheu a linha " + str(linhaJogad) + " e a coluna " + str(colunaJogad))
             print('\nComputador errou! :)\n')
             tabuleiroJogadorFeed[linhaJogad][colunaJogad] = 'O'
 
