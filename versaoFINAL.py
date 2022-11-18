@@ -112,6 +112,7 @@ while embarcacoesJogad and embarcacoesComput != 0:
             embarcacoesJogad -= 1
         elif tabuleiroJogadorCoord[linhaJogad][colunaJogad] == 0:
             print('\nComputador errou! :)\n')
+            tabuleiroJogadorFeed[linhaJogad][colunaJogad] = 'O'
 
         ataquesComputador -= 1
         time.sleep(2)
@@ -147,6 +148,7 @@ while embarcacoesJogad and embarcacoesComput != 0:
 
         else:
             print('\nVocê errou! :(\n')
+            tabuleiroComputFeed[linhaComput][colunaComput] = 'O'
             ataquesJogador -= 1
 
         time.sleep(2)
